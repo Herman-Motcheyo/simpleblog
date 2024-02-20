@@ -11,26 +11,27 @@ import Write from './pages/Write';
 import Home from './pages/Home';
 import Single from './pages/Single';
 import Footer from './components/Footer';
+import "./style.scss"
 
-const Layout = () => {  
-return(
-  <>
-    <Home/>
-    <Outlet/>
-    <Footer/>
-  </>
-)  
+const Layout = () => {
+  return (
+    <>
+      <Home />
+      <Outlet />
+      <Footer />
+    </>
+  )
 }
 
 
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <Layout/>,
-    children:[
-      {path:"/", element:<Home/>},
-      {path:"/single", element:<Single/>},
-      {path:"/write", element:<Write/>},
+    element: <Layout />,
+    children: [
+      { path: "/", element: <Home /> },
+      { path: "/post/:id", element: <Single /> },
+      { path: "/write", element: <Write /> },
     ]
   },
   {
@@ -43,10 +44,12 @@ const router = createBrowserRouter([
   }
 ]);
 
-const  App = ()=> {
+const App = () => {
   return (
-    <div>
-      <RouterProvider router={router}/>
+    <div className='app'>
+      <div className='container'>
+        <RouterProvider router={router} />
+      </div>
     </div>
   );
 }
